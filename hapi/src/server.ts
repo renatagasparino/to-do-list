@@ -1,7 +1,8 @@
-
 import Hapi from '@hapi/hapi'
-import logger from './lib/logger'
-import authBasic from './lib/auth-basic'
+
+import pluginLogger from './lib/logger'
+import pluginAuthBasic from './lib/auth-basic'
+
 import hello from './routes/hello'
 import health from './routes/health'
 import validated from './routes/validated'
@@ -21,8 +22,8 @@ export default async (options?: Hapi.ServerOptions): Promise<Readonly<Hapi.Serve
   const server = Hapi.server(options)
 
   await Promise.all([
-    server.register(logger),
-    server.register(authBasic),
+    server.register(pluginLogger),
+    server.register(pluginAuthBasic),
   ])
 
   await Promise.all([
