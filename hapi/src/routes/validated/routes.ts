@@ -22,7 +22,7 @@ const getDefault = Object.freeze<ServerRoute>({
 
 
 /**
- * @handle `GET /from-path/{name}`
+ * @handle `GET /from-path/{name}/{age}`
  */
 const getByPath = Object.freeze<ServerRoute>({
   method: 'GET',
@@ -40,7 +40,7 @@ const getByPath = Object.freeze<ServerRoute>({
 
 
 /**
- * @handle `GET /from-query/{name}`
+ * @handle `GET /from-query`
  */
 const getByQuery = Object.freeze<ServerRoute>({
   method: 'GET',
@@ -57,7 +57,7 @@ const getByQuery = Object.freeze<ServerRoute>({
 })
 
 /**
- * @handle `GET /from-headers/{name}`
+ * @handle `GET /from-headers`
  */
 const getByHeader = Object.freeze<ServerRoute>({
   method: 'GET',
@@ -74,7 +74,7 @@ const getByHeader = Object.freeze<ServerRoute>({
 })
 
 /**
- * @handle `GET /from-payload/{name}`
+ * @handle `POST /from-payload`
  */
 const getByPayload = Object.freeze<ServerRoute>({
   method: 'POST',
@@ -93,7 +93,7 @@ const getByPayload = Object.freeze<ServerRoute>({
 
 /** Zod schema to validate one object with name and age */
 const NameAndAge = z.object({
-  name: z.string().regex(/^[a-zA-Z]+$/u),
+  name: z.string().regex(/^[a-zA-Z ]+$/u),
   age: z.preprocess(v => Math.floor(Number(v)), z.number().min(1).max(99)),
 })
 type NameAndAge = z.infer<typeof NameAndAge>
