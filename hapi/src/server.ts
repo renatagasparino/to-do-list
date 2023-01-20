@@ -6,7 +6,7 @@ import pluginAuthBasic from './lib/auth-basic'
 import hello from './routes/hello'
 import health from './routes/health'
 import validated from './routes/validated'
-import restricted from './routes/restricted'
+import authBasic from './routes/auth-basic'
 
 
 /**
@@ -30,7 +30,7 @@ export default async (options?: Hapi.ServerOptions): Promise<Readonly<Hapi.Serve
     server.register(hello, {routes: {prefix: '/api/hello'}}),
     server.register(health, {routes: {prefix: '/api/health'}}),
     server.register(validated, {routes: {prefix: '/api/validated'}}),
-    server.register(restricted, {routes: {prefix: '/api/restricted'}}),
+    server.register(authBasic, {routes: {prefix: '/api/auth-basic'}}),
   ])
 
   await server.initialize()
