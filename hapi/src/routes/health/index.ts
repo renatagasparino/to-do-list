@@ -13,11 +13,11 @@ export default Object.freeze<Plugin<void>>({
   version: '1.0.0',
   register: server => {
 
-    // declare a server method warpper for `service.health`, for caching;
+    // declare a server method warper for `service.health`, for caching;
     // don't use `health` directly, to avoid creating a closure and allow tests with mocks
     server.method('healthCached', () => health(), {cache: {
-      expiresIn: 200,             // 200 ms
-      generateTimeout: 60,        // 30 ms >>> `health` waits 20 ms!!
+      expiresIn: 10_000,           // ms
+      generateTimeout: 1_100,      // ms >>> `health` waits 1_000 ms!!
       getDecoratedValue: true,
     }})
 

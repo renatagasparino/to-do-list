@@ -46,8 +46,9 @@ describe('route GET /', () => {
 
 describe('route GET /cached', () => {
 
-  const CACHE_EXPIRES_IN = 200 // MUST be in synch with index.ts
-  const HANDLER_WAIT = 20      // MUST be in synch with service.ts
+  const TEST_TIMEOUT = 10_1000    // MUST be greater than CACHE_EXPIRES_IN
+  const CACHE_EXPIRES_IN = 10_000 // MUST be in synch with index.ts
+  const HANDLER_WAIT = 1_000      // MUST be in synch with service.ts
 
   it('returns health of the current proccess', async () => {
     const res = await server.inject({method: 'GET', url: '/cached'})
@@ -95,6 +96,6 @@ describe('route GET /cached', () => {
     expect(rs2.statusCode).toEqual(200)
 
     expect(rs1.result).not.toEqual(rs2.result)
-  })
+  }, TEST_TIMEOUT)
 
 })
