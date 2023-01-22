@@ -25,10 +25,30 @@ afterAll(() => { jest.restoreAllMocks() })
 
 describe('route GET /', () => {
 
-  it('handles happy path', async () => {
+  it('returns greeting', async () => {
     const res = await server.inject({method: 'GET', url: '/'})
 
     expect(res.statusCode).toEqual(200)
     expect(res.result).toEqual(fakeHello)
   })
+})
+
+describe('route GET /with-content-type', () => {
+
+  it('returns greeting', async () => {
+    const res = await server.inject({method: 'GET', url: '/with-content-type'})
+
+    expect(res.statusCode).toEqual(200)
+    expect(res.result).toEqual(fakeHello)
+  })
+
+  it('returns content type as text/plain', async () => {
+    const res = await server.inject({method: 'GET', url: '/with-content-type'})
+
+    expect(res.statusCode).toEqual(200)
+    expect(res.headers).toMatchObject({
+      'content-type': expect.stringContaining('text/plain'),
+    })
+  })
+
 })
