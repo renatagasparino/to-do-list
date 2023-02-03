@@ -10,11 +10,11 @@ import {validate} from './service'
  * - Extend typeof `Hapi.Request.auth.credentials.user` with credentials
  */
 export default Object.freeze<Hapi.Plugin<void>>({
-  name: 'auth-basic',
+  name: 'auth-basic-plugin',
   version: '1.0.0',
   register: async server => {
     await server.register(HapiBasic)
-    server.auth.strategy('basic-unsafe', 'basic', {validate})
+    server.auth.strategy('auth-basic-strategy', 'basic', {validate})
   },
 })
 

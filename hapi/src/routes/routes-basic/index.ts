@@ -7,8 +7,8 @@ import routes from './routes'
  * Recommended route prefix 'api/restricted'
  */
 export default Object.freeze<Plugin<void>>({
-  name: 'basic',
+  name: 'routes-basic',
   version: '1.0.0',
-  dependencies: ['auth-basic'],
+  dependencies: ['auth-basic-plugin'],
   register: server => server.route(routes),
 })

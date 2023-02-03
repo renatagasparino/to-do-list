@@ -11,7 +11,7 @@ const getBasicRequired = Object.freeze<ServerRoute>({
   method: 'GET',
   path: '/required',
   options: {
-    auth: 'basic-unsafe',
+    auth: 'auth-basic-strategy',
   },
   handler: (req, _h) => showAuth(req.auth),
 
@@ -28,7 +28,7 @@ const getBasicOptional = Object.freeze<ServerRoute>({
   options: {
     auth: {
       mode: 'optional',
-      strategy: 'basic-unsafe',
+      strategy: 'auth-basic-strategy',
     },
   },
   handler: (req, _h) => showAuth(req.auth),
@@ -45,7 +45,7 @@ const getBasicTry = Object.freeze<ServerRoute>({
   options: {
     auth: {
       mode: 'try',
-      strategy: 'basic-unsafe',
+      strategy: 'auth-basic-strategy',
     },
   },
   handler: (req, _h) => showAuth(req.auth),
