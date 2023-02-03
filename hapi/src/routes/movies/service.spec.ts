@@ -1,10 +1,10 @@
 import {
-  getAll,
-  getOne,
-  create,
-  update,
-  remove,
-  search,
+  getAll as _getAll,
+  getOne as _getOne,
+  create as _create,
+  update as _update,
+  remove as _remove,
+  search as _search,
 } from './service'
 
 

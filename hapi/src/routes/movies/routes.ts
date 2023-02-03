@@ -1,4 +1,3 @@
-import MongoDB from 'mongodb'
 import type {ServerRoute, Request} from '@hapi/hapi'
 import {
   Movie,
@@ -9,7 +8,6 @@ import {
   remove,
   search,
 } from './service'
-import { Payload } from '@hapi/boom'
 
 
 /**
@@ -21,9 +19,9 @@ const getAllMovies = Object.freeze<ServerRoute>({
   path: '/',
   handler: (req, _h) => {
     // get data from request
-    const mongo = req.mongo
-    const offset = Number(req.query['offset']) || 0
-    const limit = Number(req.query['limit']) || 20
+    const {mongo} = req
+    const offset = Number(req.query['offset']) ?? 0
+    const limit = Number(req.query['limit']) ?? 20
 
     // call handler (request-agnostic)
     return getAll(mongo, offset, limit)
@@ -66,8 +64,8 @@ const getOneMovie = Object.freeze<ServerRoute>({
   path: '/{id}',
   handler: async (req, _h) => {
     // get data from request
-    const mongo = req.mongo
-    const id = req.params.id
+    const {mongo} = req
+    const {id} = req.params
 
     // call handler (request-agnostic)
     return getOne(mongo, id)
@@ -88,8 +86,8 @@ const putMovie = Object.freeze<ServerRoute>({
   },
   handler: async (req: Request<{Payload: Movie}>, h) => {
     // get data from request
-    const mongo = req.mongo
-    const id = req.params.id
+    const {mongo} = req
+    const {id} = req.params
     const movie = req.payload
 
     // call handler (request-agnostic)
@@ -106,8 +104,8 @@ const deleteMovie = Object.freeze<ServerRoute>({
   path: '/{id}',
   handler: async (req, _h) => {
     // get data from request
-    const mongo = req.mongo
-    const id = req.params.id
+    const {mongo} = req
+    const {id} = req.params
 
     // call handler (request-agnostic)
     return remove(mongo, id)
@@ -123,11 +121,11 @@ const getSearch = Object.freeze<ServerRoute>({
   path: '/search',
   handler: async (req, _h) => {
     // get data from request
-    const mongo = req.mongo
-    const query = req.query.term
+    const {mongo} = req
+    const term = req.query.term
 
     // call handler (request-agnostic)
-    return search(mongo, query)
+    return search(mongo, term)
   },
 })
 
