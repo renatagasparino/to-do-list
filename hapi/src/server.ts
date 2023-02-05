@@ -11,6 +11,7 @@ import health from './routes/health'
 import validated from './routes/validated'
 import authBasic from './routes/routes-basic'
 import authFoo from './routes/routes-foo'
+import todo from './routes/todo'
 
 
 /**
@@ -39,6 +40,7 @@ export default async (options?: Hapi.ServerOptions): Promise<Readonly<Hapi.Serve
     server.register(validated, {routes: {prefix: '/api/validated'}}),
     server.register(authBasic, {routes: {prefix: '/api/route-basic'}}),
     server.register(authFoo, {routes: {prefix: '/api/route-foo'}}),
+    server.register(todo, {routes: {prefix: '/api/todo'}}),
   ])
 
   await server.initialize()
