@@ -20,7 +20,7 @@ export default Object.freeze<Hapi.Plugin<void>>({
     const user = 'todo'
     const password = 'todo'
     const options: hapiMongo.Options = {
-      url: `mongodb+srv://${user}:${password}@cluster0.ffxb3jr.mongodb.net/task?retryWrites=true&w=majority`,
+      url: `mongodb+srv://${user}:${password}@cluster0.ffxb3jr.mongodb.net/project?retryWrites=true&w=majority`,
       settings: {useUnifiedTopology: true},
       decorate: true,
     }

@@ -5,7 +5,7 @@ import z from 'zod'
 export const Task = z.object({
   description: z.string(),
   done: z.boolean(),
-  dueDate: z.date(),
+  dueDate: z.coerce.date(),
 })
 export type Task = z.infer<typeof Task>
 

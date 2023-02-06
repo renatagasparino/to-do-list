@@ -131,7 +131,7 @@ const getSearch = Object.freeze<ServerRoute>({
 
 
 /**
- * Routes of the plugin `hello`
+ * Routes of the plugin `moves`
  */
 export default [
   getAllMovies,
