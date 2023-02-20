@@ -1,18 +1,18 @@
 {
 	"info": {
-		"_postman_id": "6137e1f1-1b56-46d2-a394-feb27d91486a",
-		"name": "movies",
+		"_postman_id": "0a033a55-d824-47d0-bcce-440ad5cb6317",
+		"name": "todo",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "1794950"
+		"_exporter_id": "25366239"
 	},
 	"item": [
 		{
-			"name": "my-movies",
+			"name": "all-tasks",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/movies",
+					"raw": "http://localhost:3000/api/todo",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -20,19 +20,19 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"movies"
+						"todo"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "my-movies-search",
+			"name": "search-task",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/movies/search",
+					"raw": "http://localhost:3000/api/todo/search?description=yoga",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -40,20 +40,26 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"movies",
+						"todo",
 						"search"
+					],
+					"query": [
+						{
+							"key": "description",
+							"value": "yoga"
+						}
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "my-movies-one",
+			"name": "one-task",
 			"request": {
 				"method": "GET",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/movies/123",
+					"raw": "http://localhost:3000/api/todo/63e1320bd8e782b208a3bf0b",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -61,20 +67,29 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"movies",
-						"123"
+						"todo",
+						"63e1320bd8e782b208a3bf0b"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "my-movies",
+			"name": "post-task",
 			"request": {
 				"method": "POST",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\n{\n    \"description\": \"party\",\n    \"done\": true,\n    \"dueDate\": \"2023-02-10T23:00:00.000Z\"\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:3000/api/movies",
+					"raw": "http://localhost:3000/api/todo",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -82,19 +97,28 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"movies"
+						"todo"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "my-movies",
+			"name": "replace-task",
 			"request": {
 				"method": "PUT",
 				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\n    \"description\": \"travel\",\n    \"done\": false,\n    \"dueDate\": \"2023-02-11T20:00:00.000Z\"\n}\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
 				"url": {
-					"raw": "http://localhost:3000/api/movies/123",
+					"raw": "http://localhost:3000/api/todo/63e1320bd8e782b208a3bf0b",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -102,20 +126,20 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"movies",
-						"123"
+						"todo",
+						"63e1320bd8e782b208a3bf0b"
 					]
 				}
 			},
 			"response": []
 		},
 		{
-			"name": "my-movies",
+			"name": "delete-task",
 			"request": {
 				"method": "DELETE",
 				"header": [],
 				"url": {
-					"raw": "http://localhost:3000/api/movies/123",
+					"raw": "http://localhost:3000/api/todo/63e184231401ef2a1962bdae",
 					"protocol": "http",
 					"host": [
 						"localhost"
@@ -123,8 +147,8 @@
 					"port": "3000",
 					"path": [
 						"api",
-						"movies",
-						"123"
+						"todo",
+						"63e184231401ef2a1962bdae"
 					]
 				}
 			},
