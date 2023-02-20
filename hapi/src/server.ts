@@ -5,12 +5,7 @@ import pluginAuthBasic from './lib/auth-basic'
 import pluginAuthFoo from './lib/auth-foo'
 import pluginMongo from './lib/mongo'
 
-import hello from './routes/hello'
-import movies from './routes/movies'
-import health from './routes/health'
-import validated from './routes/validated'
-import authBasic from './routes/routes-basic'
-import authFoo from './routes/routes-foo'
+
 import todo from './routes/todo'
 
 
@@ -34,12 +29,6 @@ export default async (options?: Hapi.ServerOptions): Promise<Readonly<Hapi.Serve
   ])
 
   await Promise.all([
-    server.register(hello, {routes: {prefix: '/api/hello'}}),
-    server.register(movies, {routes: {prefix: '/api/movies'}}),
-    server.register(health, {routes: {prefix: '/api/health'}}),
-    server.register(validated, {routes: {prefix: '/api/validated'}}),
-    server.register(authBasic, {routes: {prefix: '/api/route-basic'}}),
-    server.register(authFoo, {routes: {prefix: '/api/route-foo'}}),
     server.register(todo, {routes: {prefix: '/api/todo'}}),
   ])
 
